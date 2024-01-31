@@ -12,30 +12,6 @@ public class NhanVien extends DanhSachHoaDon {
         this.phai = phai;
     }
 
-    public NhanVien() {
-        
-    }
-
-    public String getMaNV() {
-        return maNV;
-    }
-
-    public String getHotenNV() {
-        return hotenNV;
-    }
-
-    public String getPhai() {
-        return phai;
-    }
-
-    public void setHoNV(String hoNV) {
-        this.hotenNV = hotenNV;
-    }
-
-
-    public void setPhai(String phai) {
-        this.phai = phai;
-    }
-    
+   
 }
 
