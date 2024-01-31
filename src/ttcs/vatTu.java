@@ -29,52 +29,6 @@ public class vatTu {
         this.giaBan = giaBan;
     }
 
-    public String getMaVT() {
-        return maVT;
-    }
-
-    public void setMaVT(String maVT) {
-        this.maVT = maVT;
-    }
-
-    public String getTenVT() {
-        return tenVT;
-    }
-
-    public void setTenVT(String tenVT) {
-        this.tenVT = tenVT;
-    }
-
-    public String getPhanLoai() {
-        return phanLoai;
-    }
-
-    public void setPhanLoai(String phanLoai) {
-        this.phanLoai = phanLoai;
-    }
-
-    public String getDonViTinh() {
-        return donViTinh;
-    }
-
-    public void setDonViTinh(String donViTinh) {
-        this.donViTinh = donViTinh;
-    }
-
-    public String getSoLuongTon() {
-        return soLuongTon;
-    }
-
-    public void setSoLuongTon(String soLuongTon) {
-        this.soLuongTon = soLuongTon;
-    }
-
-    public String getGiaBan() {
-        return giaBan;
-    }
-
-    public void setGiaBan(String giaBan) {
-        this.giaBan = giaBan;
-    }
+    
 }
 
