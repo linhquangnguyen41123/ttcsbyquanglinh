@@ -8,95 +8,96 @@ package demottcs;
  *
  * @author nguye
  */
-public class vatTu {
-    private String maVT;
-    private String tenVT;
-    private String phanLoai;
-    private String donViTinh;
-    private int soLuongTon;
-    private float giaBan;
-    private float donGiaBan;
-    private String maNSX;
+public class VatTu {
+    private String MaVT;
+    private String TenVT;
+    private String PhanLoai;
+    private String DonViTinh;
+    private int SoLuongTon;
+    private float DonGiaNhap;
+    private float DonGiaBan;
+    private String MaNSX;
 
-    public vatTu() {
+    public VatTu() {
     }
 
-    public vatTu(String maVT, String tenVT, String phanLoai, String donViTinh, int soLuongTon, float giaBan, float donGiaBan, String maNSX) {
-        this.maVT = maVT;
-        this.tenVT = tenVT;
-        this.phanLoai = phanLoai;
-        this.donViTinh = donViTinh;
-        this.soLuongTon = soLuongTon;
-        this.giaBan = giaBan;
-        this.donGiaBan = donGiaBan;
-        this.maNSX = maNSX;
+    public VatTu(String MaVT, String TenVT, String PhanLoai, String DonViTinh, int SoLuongTon, float DonGiaNhap, float DonGiaBan, String MaNSX) {
+        this.MaVT = MaVT;
+        this.TenVT = TenVT;
+        this.PhanLoai = PhanLoai;
+        this.DonViTinh = DonViTinh;
+        this.SoLuongTon = SoLuongTon;
+        this.DonGiaNhap = DonGiaNhap;
+        this.DonGiaBan = DonGiaBan;
+        this.MaNSX = MaNSX;
     }
 
     public String getMaVT() {
-        return maVT;
+        return MaVT;
     }
 
-    public void setMaVT(String maVT) {
-        this.maVT = maVT;
+    public void setMaVT(String MaVT) {
+        this.MaVT = MaVT;
     }
 
     public String getTenVT() {
-        return tenVT;
+        return TenVT;
     }
 
-    public void setTenVT(String tenVT) {
-        this.tenVT = tenVT;
+    public void setTenVT(String TenVT) {
+        this.TenVT = TenVT;
     }
 
     public String getPhanLoai() {
-        return phanLoai;
+        return PhanLoai;
     }
 
-    public void setPhanLoai(String phanLoai) {
-        this.phanLoai = phanLoai;
+    public void setPhanLoai(String PhanLoai) {
+        this.PhanLoai = PhanLoai;
     }
 
     public String getDonViTinh() {
-        return donViTinh;
+        return DonViTinh;
     }
 
-    public void setDonViTinh(String donViTinh) {
-        this.donViTinh = donViTinh;
+    public void setDonViTinh(String DonViTinh) {
+        this.DonViTinh = DonViTinh;
     }
 
     public int getSoLuongTon() {
-        return soLuongTon;
+        return SoLuongTon;
     }
 
-    public void setSoLuongTon(int soLuongTon) {
-        this.soLuongTon = soLuongTon;
+    public void setSoLuongTon(int SoLuongTon) {
+        this.SoLuongTon = SoLuongTon;
     }
 
-    public float getGiaBan() {
-        return giaBan;
+    public float getDonGiaNhap() {
+        return DonGiaNhap;
     }
 
-    public void setGiaBan(float giaBan) {
-        this.giaBan = giaBan;
+    public void setDonGiaNhap(float DonGiaNhap) {
+        this.DonGiaNhap = DonGiaNhap;
     }
 
     public float getDonGiaBan() {
-        return donGiaBan;
+        return DonGiaBan;
     }
 
-    public void setDonGiaBan(float donGiaBan) {
-        this.donGiaBan = donGiaBan;
+    public void setDonGiaBan(float DonGiaBan) {
+        this.DonGiaBan = DonGiaBan;
     }
 
     public String getMaNSX() {
-        return maNSX;
+        return MaNSX;
     }
 
-    public void setMaNSX(String maNSX) {
-        this.maNSX = maNSX;
+    public void setMaNSX(String MaNSX) {
+        this.MaNSX = MaNSX;
     }
+
     
-    
+   
     
 }
 

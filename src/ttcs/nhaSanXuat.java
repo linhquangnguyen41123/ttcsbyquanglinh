@@ -8,34 +8,35 @@ package demottcs;
  *
  * @author nguye
  */
-public class nhaSanXuat {
-     private String maNSX;
-    private String tenNSX;
+public class NhaSanXuat {
+    private String MaNSX;
+    private String TenNSX;
 
-    public nhaSanXuat() {
+    public NhaSanXuat() {
     }
 
-    public nhaSanXuat(String maNSX, String tenNSX) {
-        this.maNSX = maNSX;
-        this.tenNSX = tenNSX;
+    public NhaSanXuat(String MaNSX, String TenNSX) {
+        this.MaNSX = MaNSX;
+        this.TenNSX = TenNSX;
     }
 
     public String getMaNSX() {
-        return maNSX;
+        return MaNSX;
     }
 
-    public void setMaNSX(String maNSX) {
-        this.maNSX = maNSX;
+    public void setMaNSX(String MaNSX) {
+        this.MaNSX = MaNSX;
     }
 
     public String getTenNSX() {
-        return tenNSX;
+        return TenNSX;
     }
 
-    public void setTenNSX(String tenNSX) {
-        this.tenNSX = tenNSX;
+    public void setTenNSX(String TenNSX) {
+        this.TenNSX = TenNSX;
     }
-    
+
+   
     
     
 }
