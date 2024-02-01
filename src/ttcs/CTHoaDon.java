@@ -16,7 +16,7 @@ public class CTHoaDon {
     private int donGia;
 
 
-    public ChiTietHD() {
+    public CTHoaDon() {
     }
 
     public String getMaHoaDon() {
