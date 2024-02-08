@@ -461,6 +461,11 @@ private void LamMoi(){
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
 
         tblvattu.setBackground(new java.awt.Color(255, 204, 204));
         tblvattu.setModel(new javax.swing.table.DefaultTableModel(
@@ -529,18 +534,15 @@ private void LamMoi(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblvattuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblvattuMouseClicked
-        int x=tblvattu.getSelectedRow();
-        if(x>=0){
-            txtmavt.setText(tblvattu.getValueAt(x, 1)+"");
-            txttenvt.setText(tblvattu.getValueAt(x, 2)+"");
-            // Lấy giá trị giới tính từ cột 2 (giả sử)
-        String phanloaira = tblvattu.getValueAt(x, 3).toString();
-
-        // Thiết lập trạng thái của các radio button dựa trên giới tính
-        if (phanloaira.equals("Do gia dung")) {
+        int vattu =tblvattu.getSelectedRow();
+        if(vattu >=0){
+            txtmavt.setText(tblvattu.getValueAt(vattu, 1)+"");
+            txttenvt.setText(tblvattu.getValueAt(vattu, 2)+"");
+        String phanloaira = tblvattu.getValueAt(vattu, 3).toString();
+        if (phanloaira.equals("Đồ gia dụng")) {
             btndogiadung.setSelected(true);
             btnthietbimay.setSelected(false);
-        } else if (phanloaira.equals("Thiet bi may")) {
+        } else if (phanloaira.equals("Thiết bị máy")) {
             btndogiadung.setSelected(false);
             btnthietbimay.setSelected(true);
         } else {
@@ -548,11 +550,11 @@ private void LamMoi(){
             btnthietbimay.setSelected(false);
         }
 
-            txtdonvitinh.setText(tblvattu.getValueAt(x, 4)+"");
-            txtsoluongton.setText(tblvattu.getValueAt(x, 5)+"");
-            txtdongianhap.setText(tblvattu.getValueAt(x, 6)+"");
-            txtdongiaban.setText(tblvattu.getValueAt(x, 7)+"");
-            txtmansx.setText(tblvattu.getValueAt(x, 8)+"");
+            txtdonvitinh.setText(tblvattu.getValueAt(vattu, 4)+"");
+            txtsoluongton.setText(tblvattu.getValueAt(vattu, 5)+"");
+            txtdongianhap.setText(tblvattu.getValueAt(vattu, 6)+"");
+            txtdongiaban.setText(tblvattu.getValueAt(vattu, 7)+"");
+            txtmansx.setText(tblvattu.getValueAt(vattu, 8)+"");
             txtmavt.setEnabled(false);
         }
        
@@ -868,6 +870,10 @@ private void LamMoi(){
     private void btndogiadungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndogiadungActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btndogiadungActionPerformed
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3MouseClicked
 
   public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(() -> {
