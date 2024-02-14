@@ -11,9 +11,9 @@ import java.util.Date;
  * @author Anh Kiet
  */
 public class HoaDon {
-    private int soHD;
-    private Date ngayLapHoaDon;
-    private String loaiHD;
+    private String SoHD;
+    private Date NgayLapHoaDon;
+    private String LoaiHD;
     private String MaNV;
     private String MaKH;
     private float ThanhTien;
@@ -23,29 +23,29 @@ public class HoaDon {
         this.TrangThai = 0;
     }
 
-
-    public int getSoHD() {
-        return soHD;
+    public String getSoHD() {
+        return SoHD;
     }
 
-    public void setSoHD(int soHD) {
-        this.soHD = soHD;
+    public void setSoHD(String SoHD) {
+        this.SoHD = SoHD;
     }
+
 
     public Date getNgayLapHoaDon() {
-        return ngayLapHoaDon;
+        return NgayLapHoaDon;
     }
 
     public void setNgayLapHoaDon(Date ngayLapHoaDon) {
-        this.ngayLapHoaDon = ngayLapHoaDon;
+        this.NgayLapHoaDon = NgayLapHoaDon;
     }
 
     public String getLoaiHD() {
-        return loaiHD;
+        return LoaiHD;
     }
 
     public void setLoaiHD(String loaiHD) {
-        this.loaiHD = loaiHD;
+        this.LoaiHD = loaiHD;
     }
 
     public String getMaNV() {
