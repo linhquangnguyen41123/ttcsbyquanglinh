@@ -4,7 +4,7 @@
  */
 package ttcs;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -12,11 +12,11 @@ import java.util.Date;
  */
 public class HoaDon {
     private String SoHD;
-    private Date NgayLapHoaDon;
+    private String NgayLapHoaDon;
     private String LoaiHD;
     private String MaNV;
     private String MaKH;
-    private float ThanhTien;
+    private int ThanhTien;
     private int TrangThai;
 
     public HoaDon(){
@@ -32,11 +32,11 @@ public class HoaDon {
     }
 
 
-    public Date getNgayLapHoaDon() {
+    public String getNgayLapHoaDon() {
         return NgayLapHoaDon;
     }
 
-    public void setNgayLapHoaDon(Date ngayLapHoaDon) {
+    public void setNgayLapHoaDon(String NgayLapHoaDon) {
         this.NgayLapHoaDon = NgayLapHoaDon;
     }
 
@@ -56,11 +56,11 @@ public class HoaDon {
         this.MaNV = MaNV;
     }
 
-    public float getThanhTien() {
+    public int getThanhTien() {
         return ThanhTien;
     }
 
-    public void setThanhTien(float ThanhTien) {
+    public void setThanhTien(int ThanhTien) {
         this.ThanhTien = ThanhTien;
     }
 

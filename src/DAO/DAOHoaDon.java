@@ -24,8 +24,9 @@ public class DAOHoaDon {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=vtvp;"
                     + "username=sa;password=123;encrypt=false");
-        } catch (ClassNotFoundException | SQLException e) {
-        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }     
     }
     
     public ArrayList<HoaDon> getListHD(){
@@ -37,15 +38,16 @@ public class DAOHoaDon {
             while (rs.next()) {                
                 HoaDon hd = new HoaDon();
                 hd.setSoHD(rs.getString("MaHD"));
-                hd.setNgayLapHoaDon(rs.getDate("NgayLap"));
+                hd.setNgayLapHoaDon(rs.getString("NgayLap"));
                 hd.setLoaiHD(rs.getString("Loai"));
                 hd.setMaNV(rs.getString("MaNV"));
                 hd.setMaKH(rs.getString("MaKH"));
-                hd.setThanhTien(rs.getFloat("ThanhTien"));
+                hd.setThanhTien(rs.getInt("ThanhTien"));
                 hd.setTrangThai(rs.getInt("TrangThai"));
                 listHD.add(hd);
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return listHD;
     }
@@ -56,18 +58,19 @@ public class DAOHoaDon {
         try {
             PreparedStatement ps= conn.prepareStatement(sql);
             ps.setString(1, hd.getSoHD());
-            ps.setDate(2, (Date) hd.getNgayLapHoaDon());
+            ps.setString(2, hd.getNgayLapHoaDon());
             ps.setString(3, hd.getLoaiHD());
             ps.setString(4, hd.getMaNV());
             ps.setString(5, hd.getMaKH());
-            ps.setFloat(6, hd.getThanhTien());
+            ps.setFloat(6,hd.getThanhTien());
             ps.setInt(7, hd.getTrangThai());
             ps.executeUpdate();
-        } catch (SQLException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         
     }
-    public void updateGiaTriHD(HoaDon hd, float thanhTien){
+    public void updateGiaTriHD(HoaDon hd, int thanhTien){
    
         String sqlUpdateSLT = "update dbo.HoaDon set ThanhTien = ? where MaHD = ?";
         try {
@@ -77,7 +80,8 @@ public class DAOHoaDon {
             ps.setFloat(1, thanhTien);
             ps.setString(2, hd.getSoHD());
             ps.executeUpdate();
-        } catch (SQLException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     public void updateTrangThaiHD(HoaDon hd){
@@ -90,10 +94,11 @@ public class DAOHoaDon {
             ps.setInt(1, hd.getTrangThai());
             ps.setString(2, hd.getSoHD());
             ps.executeUpdate();
-        } catch (SQLException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     public static void main(String[] args) {
         new DAOHoaDon();
-    }
+    } 
 }

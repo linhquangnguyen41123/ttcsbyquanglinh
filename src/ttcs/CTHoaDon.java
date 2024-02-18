@@ -9,7 +9,7 @@ package ttcs;
  * @author Anh Kiet
  */
 public class CTHoaDon {
-     private String maHoaDon;
+    private String maHoaDon;
     private String maVatTu;
     private String tenVatTu;
     private int soLuong;
