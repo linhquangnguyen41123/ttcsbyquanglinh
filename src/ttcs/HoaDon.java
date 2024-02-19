@@ -4,8 +4,6 @@
  */
 package ttcs;
 
-import java.sql.Date;
-
 /**
  *
  * @author Anh Kiet

@@ -11,8 +11,7 @@ package ttcs;
 public class KhachHang {
     private String MaKH;
     private String TenKH;
-    private String DiaChi;
-    private String Sdt;
+    
 
     public KhachHang() {
     }
@@ -32,22 +31,5 @@ public class KhachHang {
     public void setTenKH(String TenKH) {
         this.TenKH = TenKH;
     }
-
-    public String getDiaChi() {
-        return DiaChi;
-    }
-
-    public void setDiaChi(String DiaChi) {
-        this.DiaChi = DiaChi;
-    }
-
-    public String getSdt() {
-        return Sdt;
-    }
-
-    public void setSdt(String Sdt) {
-        this.Sdt = Sdt;
-    }
-    
-    
+  
 }

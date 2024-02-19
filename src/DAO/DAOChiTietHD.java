@@ -4,7 +4,6 @@
  */
 package DAO;
 
-import QLVT_BY_LINH.VatTu;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import ttcs.CTHoaDon;
 import ttcs.HoaDon;
+import ttcs.VatTu;
 
 /**
  *

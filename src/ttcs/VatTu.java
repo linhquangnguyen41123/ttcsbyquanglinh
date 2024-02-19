@@ -1,5 +1,5 @@
 
-package QLVT_BY_LINH;
+package ttcs;
 
 public class VatTu {
     private String MaVT;
@@ -7,14 +7,14 @@ public class VatTu {
     private String PhanLoai;
     private String DonViTinh;
     private int SoLuongTon;
-    private float DonGiaNhap;
-    private float DonGiaBan;
+    private int DonGiaNhap;
+    private int DonGiaBan;
     private String MaNSX;
 
     public VatTu() {
     }
 
-    public VatTu(String MaVT, String TenVT, String PhanLoai, String DonViTinh, int SoLuongTon, float DonGiaNhap, float DonGiaBan, String MaNSX) {
+    public VatTu(String MaVT, String TenVT, String PhanLoai, String DonViTinh, int SoLuongTon, int DonGiaNhap, int DonGiaBan, String MaNSX) {
         this.MaVT = MaVT;
         this.TenVT = TenVT;
         this.PhanLoai = PhanLoai;
@@ -65,19 +65,19 @@ public class VatTu {
         this.SoLuongTon = SoLuongTon;
     }
 
-    public float getDonGiaNhap() {
+    public int getDonGiaNhap() {
         return DonGiaNhap;
     }
 
-    public void setDonGiaNhap(float DonGiaNhap) {
+    public void setDonGiaNhap(int DonGiaNhap) {
         this.DonGiaNhap = DonGiaNhap;
     }
 
-    public float getDonGiaBan() {
+    public int getDonGiaBan() {
         return DonGiaBan;
     }
 
-    public void setDonGiaBan(float DonGiaBan) {
+    public void setDonGiaBan(int DonGiaBan) {
         this.DonGiaBan = DonGiaBan;
     }
 
