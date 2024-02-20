@@ -1,4 +1,5 @@
 package nhanvien;
+import QLVT_BY_LINH.connectDB;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Connection;
@@ -17,11 +18,12 @@ import java.util.Locale;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import ttcs.Nhanvien;
 
 public class GDNhanVien extends javax.swing.JFrame {
  final String header[]={"MANV","HONV","TENNV","PHAI","NGAYSINH","SĐT","EMAIL"};
     final DefaultTableModel tb= new DefaultTableModel(header,0);
-    connectDB1 cn= new connectDB1();
+    connectDB cn= new connectDB();
     Connection conn=null;
     ResultSet rs;
     private String sql;
@@ -366,7 +368,6 @@ private void xoatrang(){
         });
         jScrollPane1.setViewportView(tblnhanvien);
 
-        btnthoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/Cancel.png"))); // NOI18N
         btnthoat.setText("Thoát");
         btnthoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
