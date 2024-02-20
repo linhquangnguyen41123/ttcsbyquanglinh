@@ -167,7 +167,6 @@ private void xoatrang(){
 
         jPanel4.setBackground(new java.awt.Color(255, 204, 204));
 
-        btnThêm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/Create.png"))); // NOI18N
         btnThêm.setText("Thêm");
         btnThêm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,7 +174,6 @@ private void xoatrang(){
             }
         });
 
-        btnSửa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/Modify.png"))); // NOI18N
         btnSửa.setText("Sửa");
         btnSửa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +181,6 @@ private void xoatrang(){
             }
         });
 
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/Delete.png"))); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,7 +188,6 @@ private void xoatrang(){
             }
         });
 
-        btnNhapmoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/Refresh.png"))); // NOI18N
         btnNhapmoi.setText("Nhập Mới");
         btnNhapmoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,7 +195,6 @@ private void xoatrang(){
             }
         });
 
-        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/View.png"))); // NOI18N
         btnTimKiem.setText("Tìm Kiếm");
         btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,7 +202,6 @@ private void xoatrang(){
             }
         });
 
-        btnLUU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/Save.png"))); // NOI18N
         btnLUU.setText("Lưu");
         btnLUU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,7 +209,6 @@ private void xoatrang(){
             }
         });
 
-        btnsxtheoten.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/Filter.png"))); // NOI18N
         btnsxtheoten.setText("Sắp xếp theo tên nv");
         btnsxtheoten.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,7 +216,6 @@ private void xoatrang(){
             }
         });
 
-        btnload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/Upload.png"))); // NOI18N
         btnload.setText("Load bảng");
         btnload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

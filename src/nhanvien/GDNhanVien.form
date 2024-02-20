@@ -333,9 +333,6 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btnTh&#xea;m">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/h16x16/Create.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
               </Properties>
               <Events>
@@ -344,9 +341,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnS&#x1eed;a">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/h16x16/Modify.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
               </Properties>
               <Events>
@@ -355,9 +349,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnXoa">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/h16x16/Delete.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
               </Properties>
               <Events>
@@ -366,9 +357,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnNhapmoi">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/h16x16/Refresh.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Nh&#x1ead;p M&#x1edb;i"/>
               </Properties>
               <Events>
@@ -377,9 +365,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnTimKiem">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/h16x16/View.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="T&#xec;m Ki&#x1ebf;m"/>
               </Properties>
               <Events>
@@ -388,9 +373,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnLUU">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/h16x16/Save.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="L&#x1b0;u"/>
               </Properties>
               <Events>
@@ -399,9 +381,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnsxtheoten">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/h16x16/Filter.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eaf;p x&#x1ebf;p theo t&#xea;n nv"/>
               </Properties>
               <Events>
@@ -410,9 +389,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnload">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/h16x16/Upload.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Load b&#x1ea3;ng"/>
               </Properties>
               <Events>

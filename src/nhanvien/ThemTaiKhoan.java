@@ -4,8 +4,8 @@
  */
 package nhanvien;
 
+import QLVT_BY_LINH.connectDB;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 public class ThemTaiKhoan extends javax.swing.JFrame {
@@ -171,7 +171,7 @@ Connection conn=null;
                  return;
              }
         try{
-            String sql="insert into account values(?,?,?,?)";
+            String sql="insert into DangNhap values(?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
              ps.setString(1, txtten.getText());
              ps.setString(2, txtmanv.getText());

@@ -18,6 +18,7 @@ import java.sql.Statement;
 import java.util.Vector;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import ttcs.VatTu;
 public class GDVatTu extends javax.swing.JFrame {
     
     final String VT []={"MAVT","TENVT","PHANLOAI","DONVITINH","SOLUONGTON","DONGIANHAP","DONGIABAN","MANSX"};
@@ -37,7 +38,7 @@ public class GDVatTu extends javax.swing.JFrame {
         conn = cn.getConnection();
         int n ;
         Vector row;
-        String sql = "select * from vattu677";
+        String sql = "select * from dbo.VatTu";
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         ResultSetMetaData metadata = rs.getMetaData();
@@ -225,7 +226,7 @@ private void LamMoi(){
         );
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setText("Đơn Giá Nhập : ");
+        jLabel3.setText("Mã Nhà sản xuất:");
 
         txtdongianhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,7 +247,7 @@ private void LamMoi(){
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setText("Đơn Giá Bán : ");
+        jLabel6.setText("Đơn Giá Nhập: ");
 
         txtdongiaban.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,10 +256,9 @@ private void LamMoi(){
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("Mã Nhà Sản Xuất : ");
+        jLabel7.setText("Đơn Giá Bán:");
 
         btnThêm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnThêm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-plus-20.png"))); // NOI18N
         btnThêm.setText("Thêm");
         btnThêm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,7 +267,6 @@ private void LamMoi(){
         });
 
         btnTìmKiếm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnTìmKiếm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-zoom-to-actual-size-20.png"))); // NOI18N
         btnTìmKiếm.setText("Tìm Kiếm theo mã vật tư");
         btnTìmKiếm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,7 +275,6 @@ private void LamMoi(){
         });
 
         btnSắpXếp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSắpXếp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-filter-20.png"))); // NOI18N
         btnSắpXếp.setText("Sắp xếp theo tên vật tư");
         btnSắpXếp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,7 +283,6 @@ private void LamMoi(){
         });
 
         btnLưu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnLưu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-save-20.png"))); // NOI18N
         btnLưu.setText("Lưu");
         btnLưu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,7 +291,6 @@ private void LamMoi(){
         });
 
         btnSửa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSửa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-edit-20.png"))); // NOI18N
         btnSửa.setText("Sửa");
         btnSửa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -303,7 +299,6 @@ private void LamMoi(){
         });
 
         btnXóa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnXóa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-clear-symbol-20.png"))); // NOI18N
         btnXóa.setText("Xóa");
         btnXóa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -312,7 +307,6 @@ private void LamMoi(){
         });
 
         btnReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-reset-20.png"))); // NOI18N
         btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,14 +324,15 @@ private void LamMoi(){
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(54, 54, 54))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(73, 73, 73)))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(73, 73, 73))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(54, 54, 54)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btndogiadung)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -390,7 +385,7 @@ private void LamMoi(){
                                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(21, 21, 21)
                                             .addComponent(txtmansx, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 50, Short.MAX_VALUE)))
                         .addContainerGap())))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -608,13 +603,13 @@ private void LamMoi(){
             float dgban = Float.parseFloat(txtdongiaban.getText());
             String maNsxuat = txtmansx.getText();
             
-            String sqlCheckExist = "select MaVT from vattu677 where MaVT=?";
+            String sqlCheckExist = "select MaVT from dbo.VatTu where MaVT=?";
             try (PreparedStatement psCheckExist = conn.prepareStatement(sqlCheckExist)) {
                 psCheckExist.setString(1, maVtu);
                 ResultSet rsCheckExist = psCheckExist.executeQuery();
 
                 if (rsCheckExist.next()) {
-                    String sqlUpdate = "update vattu677 set TenVT=?, PhanLoai=?, DonViTinh=?, SoLuongTon=?, DonGiaNhap=?, DonGiaBan=?, MaNSX=? WHERE MaVT=?";
+                    String sqlUpdate = "update dbo.VatTu set TenVT=?, PhanLoai=?, DonViTinh=?, SoLuongTon=?, DonGiaNhap=?, DonGiaBan=?, MaNSX=? WHERE MaVT=?";
                     try (PreparedStatement psUpdate = conn.prepareStatement(sqlUpdate)) {
                         psUpdate.setString(1, tenVtu);
                         psUpdate.setString(2, phanloaira);
@@ -635,7 +630,7 @@ private void LamMoi(){
                         }
                     }
                 } else {
-                    String sqlInsert = "insert into vattu677 (MaVT, TenVT, PhanLoai, DonViTinh,SoLuongTon, DonGiaNhap, DonGiaBan, MaNSX) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                    String sqlInsert = "insert into dbo.VatTu (MaVT, TenVT, PhanLoai, DonViTinh,SoLuongTon, DonGiaNhap, DonGiaBan, MaNSX) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                     try (PreparedStatement psInsert = conn.prepareStatement(sqlInsert)) {
                         psInsert.setString(1, maVtu);
                         psInsert.setString(2, tenVtu);
@@ -677,7 +672,7 @@ private void LamMoi(){
             String key= JOptionPane.showInputDialog(this, "Nhập tên vật tư bạn muốn tìm kiếm:");
 
             if (key!= null) {
-                String sql = "select *  from vattu677 where MaVT like ? or TenVT like ? or PhanLoai like ? or DonViTinh like ? or SoLuongTon like ? or DonGiaNhap like ? or DonGiaBan like ? OR MaNSX like ?";
+                String sql = "select *  from dbo.VatTu where MaVT like ? or TenVT like ? or PhanLoai like ? or DonViTinh like ? or SoLuongTon like ? or DonGiaNhap like ? or DonGiaBan like ? OR MaNSX like ?";
                 try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
                     for (int i = 1; i <= 8; i++) {
                         preparedStatement.setString(i, "%" + key + "%");
@@ -709,7 +704,7 @@ private void LamMoi(){
     private void btnXóaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXóaActionPerformed
         conn=cn.getConnection();
         try{
-            String sql="Delete vattu677 where MAVT='"+txtmavt.getText()+"'";
+            String sql="Delete dbo.VatTu where MaVT='"+txtmavt.getText()+"'";
             Statement st=conn.createStatement();
             int check_l=JOptionPane.showConfirmDialog(this, "Bạn chắc chắn xóa vật tư này không !","Thông báo!",JOptionPane.YES_NO_OPTION);
             if(check_l ==JOptionPane.YES_OPTION){
@@ -735,7 +730,7 @@ private void LamMoi(){
                     phanloaira = "Thiết bị máy";
                 }
 
-                String sql = "update vattu677 set TenVT= ?,PhanLoai= ?,DonViTinh= ?,SoLuongTon= ?,DonGiaNhap= ?,DonGiaBan= ?,MaNSX=? where MaVT = ? ";
+                String sql = "update dbo.VatTu set TenVT= ?,PhanLoai= ?,DonViTinh= ?,SoLuongTon= ?,DonGiaNhap= ?,DonGiaBan= ?,MaNSX=? where MaVT = ? ";
                 try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
                     preparedStatement.setString(1, txttenvt.getText());
                     preparedStatement.setString(2, phanloaira);
@@ -773,7 +768,7 @@ private void LamMoi(){
                 txtsoluongton.getText().equals("")|| txtdongianhap.getText().equals("") || txtdongiaban.getText().equals("") || txtmansx.getText().equals("") ) {
                 JOptionPane.showMessageDialog(this, "Bạn chưa nhập dữ liệu vui lòng nhập lại");
             } else {     
-                String sql_check = "select MaVT from vattu677 where MaVT=?";
+                String sql_check = "select MaVT from dbo.VatTu where MaVT=?";
                 try (PreparedStatement pstCheck = conn.prepareStatement(sql_check)) {
                     pstCheck.setString(1, txtmavt.getText());
                     try (ResultSet rsCheck = pstCheck.executeQuery()) {
@@ -789,7 +784,7 @@ private void LamMoi(){
                 } else if (btnthietbimay.isSelected()) {
                     phanloaira = "Thiết bị máy";
                 }
-                String sql_insert = "insert into vattu677 values (?, ?, ?, ?, ?, ?, ?,?)";
+                String sql_insert = "insert into dbo.VatTu values (?, ?, ?, ?, ?, ?, ?,?)";
                 try (PreparedStatement pstInsert = conn.prepareStatement(sql_insert)) {
                     pstInsert.setString(1, txtmavt.getText());
                     pstInsert.setString(2, txttenvt.getText());
@@ -835,8 +830,8 @@ private void LamMoi(){
             String phanloaira = tblvattu.getValueAt(i, 3).toString();
             String dvtinh = tblvattu.getValueAt(i, 4).toString();
             int slton = Integer.parseInt(tblvattu.getValueAt(i, 5).toString());
-            float dgnhap = Float.parseFloat(tblvattu.getValueAt(i, 6).toString());
-            float dgban = Float.parseFloat(tblvattu.getValueAt(i, 7).toString());
+            int dgnhap = Integer.parseInt(tblvattu.getValueAt(i, 6).toString());
+            int dgban = Integer.parseInt(tblvattu.getValueAt(i, 7).toString());
             String maNsxuat = tblvattu.getValueAt(i, 8).toString();
             VatTu vt = new VatTu(maVtu,tenVtu,phanloaira,dvtinh,slton,dgnhap,dgban,maNsxuat );
             list.add(vt);

@@ -1,4 +1,5 @@
-package nhanvien;
+package ttcs;
+import nhanvien.*;
 import java.util.Date;
 public class Nhanvien {
     private String maNV;

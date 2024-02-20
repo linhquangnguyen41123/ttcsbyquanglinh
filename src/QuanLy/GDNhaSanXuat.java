@@ -37,7 +37,7 @@ public class GDNhaSanXuat extends javax.swing.JFrame {
         conn = cn.getConnection();
         int n;
         Vector row;
-        String sql = "select * from nhasanxuat677";
+        String sql = "select * from dbo.NhaSanXuat";
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         ResultSetMetaData metadata = rs.getMetaData();
@@ -159,7 +159,6 @@ private void LamMoi(){
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
 
         btnThêm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnThêm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-plus-20.png"))); // NOI18N
         btnThêm.setText("Thêm");
         btnThêm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,7 +167,6 @@ private void LamMoi(){
         });
 
         btnSửa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSửa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-edit-20.png"))); // NOI18N
         btnSửa.setText("Sửa");
         btnSửa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +175,6 @@ private void LamMoi(){
         });
 
         btnXóa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnXóa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-clear-symbol-20.png"))); // NOI18N
         btnXóa.setText("Xóa");
         btnXóa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,7 +183,6 @@ private void LamMoi(){
         });
 
         btnTìmKiếm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnTìmKiếm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-zoom-to-actual-size-20.png"))); // NOI18N
         btnTìmKiếm.setText("Tìm Kiếm Theo Tên ");
         btnTìmKiếm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,7 +191,6 @@ private void LamMoi(){
         });
 
         btnLưu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnLưu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-save-20.png"))); // NOI18N
         btnLưu.setText("Lưu");
         btnLưu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,7 +199,6 @@ private void LamMoi(){
         });
 
         btnSắpXếpNSXTheoTên.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSắpXếpNSXTheoTên.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-filter-20.png"))); // NOI18N
         btnSắpXếpNSXTheoTên.setText("Sắp xếp nhà sản xuất theo tên");
         btnSắpXếpNSXTheoTên.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,7 +207,6 @@ private void LamMoi(){
         });
 
         btnReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/h16x16/icons8-reset-20.png"))); // NOI18N
         btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,9 +234,7 @@ private void LamMoi(){
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
                                 .addComponent(btnXóa, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnReset, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnSắpXếpNSXTheoTên, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -391,7 +382,7 @@ private void LamMoi(){
         if (txtmansx.getText().equals("") || txttennsx.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập dữ liệu vui lòng nhập lại");
         } else {
-            String sql_check = "select MaNSX from nhasanxuat677 where MaNSX=?";
+            String sql_check = "select MaNSX from dbo.NhaSanXuat where MaNSX=?";
             try (PreparedStatement pstCheck = conn.prepareStatement(sql_check)) {
                 pstCheck.setString(1, txtmansx.getText());
                 try (ResultSet rsCheck = pstCheck.executeQuery()) {
@@ -401,14 +392,14 @@ private void LamMoi(){
                     }
                 }
             }
-            String sql_insert = "insert into nhasanxuat677 values (?, ?)";
+            String sql_insert = "insert into dbo.NhaSanXuat values (?, ?)";
             try (PreparedStatement pstInsert = conn.prepareStatement(sql_insert)) {
                 pstInsert.setString(1, txtmansx.getText());
                 pstInsert.setString(2, txttennsx.getText());
 
                 int result = pstInsert.executeUpdate();
                 if (result > 0) {
-                    JOptionPane.showMessageDialog(this, "Chúc mừng bạn đã thêm mới nhà sản xuất thành công");
+                    JOptionPane.showMessageDialog(this, "Bạn đã thêm mới nhà sản xuất thành công");
                     ListNSX();
                     LamMoi();
                 }
@@ -444,7 +435,7 @@ private void LamMoi(){
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập dữ liệu vui lòng nhập lại");
         } else {
            
-    String sql = "update nhasanxuat677 set TenNSX= ? where MaNSX = ? ";
+    String sql = "update dbo.NhaSanXuat set TenNSX= ? where MaNSX = ? ";
     try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
     preparedStatement.setString(1, txttennsx.getText());
     preparedStatement.setString(2, txtmansx.getText());
@@ -481,13 +472,13 @@ private void LamMoi(){
             return;  
         }
 
-        String sqlCheckExist = "select MaNSX from nhasanxuat677 where MaNSX=?";
+        String sqlCheckExist = "select MaNSX from dbo.NhaSanXuat where MaNSX=?";
         try (PreparedStatement psCheckExist = conn.prepareStatement(sqlCheckExist)) {
             psCheckExist.setString(1, maNsxuat);
             ResultSet rsCheckExist = psCheckExist.executeQuery();
 
             if (rsCheckExist.next()) {
-                String sqlUpdate = "update nhasanxuat677 set TENNSX=? where MANSX=?";
+                String sqlUpdate = "update dbo.NhaSanXuat set TenNSX=? where MaNSX=?";
                 try (PreparedStatement psUpdate = conn.prepareStatement(sqlUpdate)) {
                     psUpdate.setString(1, tenNsxuat);
                     psUpdate.setString(2, maNsxuat);
@@ -502,7 +493,7 @@ private void LamMoi(){
                     }
                 }
             } else {
-                String sqlInsert = "insert into nhasanxuat677 (MANSX, TENNSX) values (?, ?)";
+                String sqlInsert = "insert into dbo.NhaSanXuat (MaNSX, TenNSX) values (?, ?)";
                 try (PreparedStatement psInsert = conn.prepareStatement(sqlInsert)) {
                     psInsert.setString(1, maNsxuat);
                     psInsert.setString(2, tenNsxuat);
@@ -536,7 +527,7 @@ private void LamMoi(){
         //this.fillToTable();
         conn=cn.getConnection();
         try{
-            String sql="Delete nhasanxuat677 where MANSX='"+txtmansx.getText()+"'";
+            String sql="Delete dbo.NhaSanXuat where MaNSX='"+txtmansx.getText()+"'";
             Statement st=conn.createStatement();
             int check_l=JOptionPane.showConfirmDialog(this, "Bạn chắc chắn xóa nhà sản xuất không ?","Thông báo!",JOptionPane.YES_NO_OPTION);
             if(check_l==JOptionPane.YES_OPTION){
@@ -580,7 +571,7 @@ private void LamMoi(){
         String key = JOptionPane.showInputDialog(this, "Nhập tên nhà sản xuất bạn muốn tìm kiếm:");
 
         if (key != null) {
-            String sql = "select *  from nhasanxuat677 where MaNSX like ? or TenNSX like ?";
+            String sql = "select *  from dbo.NhaSanXuat where MaNSX like ? or TenNSX like ?";
             try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
                 for (int i = 1; i <= 2; i++) {
                     preparedStatement.setString(i, "%" + key + "%");
