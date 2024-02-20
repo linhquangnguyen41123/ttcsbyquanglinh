@@ -4,8 +4,8 @@
  */
 package DAO;
 
+import QLVT_BY_LINH.connectDB;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,16 +16,7 @@ import ttcs.HoaDon;
  * @author Anh Kiet
  */
 public class DAOHoaDon {
-    private Connection conn;
-    public DAOHoaDon(){
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=vtvp;"
-                    + "username=sa;password=123;encrypt=false");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }     
-    }
+    private Connection conn = new connectDB().getConnection();
     
     public ArrayList<HoaDon> getListHD(){
         ArrayList<HoaDon> listHD = new ArrayList<>();

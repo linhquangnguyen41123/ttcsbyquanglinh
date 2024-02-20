@@ -4,8 +4,8 @@
  */
 package DAO;
 
+import QLVT_BY_LINH.connectDB;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,16 +16,7 @@ import ttcs.VatTu;
  * @author Anh Kiet
  */
 public class DAOVatTu {
-    private Connection conn;
-    public DAOVatTu(){
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=vtvp;"
-                    + "username=sa;password=123;encrypt=false");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    private Connection conn = new connectDB().getConnection();
     
     public ArrayList<VatTu> getListVT(){
         ArrayList<VatTu> listVT = new ArrayList<>();

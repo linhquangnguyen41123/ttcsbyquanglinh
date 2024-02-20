@@ -4,8 +4,8 @@
  */
 package DAO;
 
+import QLVT_BY_LINH.connectDB;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import ttcs.KhachHang;
 
@@ -14,16 +14,8 @@ import ttcs.KhachHang;
  * @author Anh Kiet
  */
 public class DAOKhachHang {
-    private Connection conn;
-    public DAOKhachHang(){
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=vtvp;"
-                    + "username=sa;password=123;encrypt=false");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }     
-    }
+    private Connection conn = new connectDB().getConnection();
+    
     public void insertHoaDon(KhachHang kh){
         String sql = "insert into dbo.KhachHang(MaKH,TenKH)"
                 + "values (?,?)";

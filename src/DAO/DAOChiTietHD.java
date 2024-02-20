@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import QLVT_BY_LINH.connectDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,16 +19,7 @@ import ttcs.VatTu;
  * @author Anh Kiet
  */
 public class DAOChiTietHD {
-    private Connection conn;
-    public DAOChiTietHD(){
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=vtvp;"
-                    + "username=sa;password=123;encrypt=false");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    private Connection conn = new connectDB().getConnection();
     
     public ArrayList<CTHoaDon> getListCTHD(HoaDon hd){
         ArrayList<CTHoaDon> listCTHD = new ArrayList<>();
