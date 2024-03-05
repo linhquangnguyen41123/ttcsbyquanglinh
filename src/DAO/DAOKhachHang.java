@@ -7,6 +7,11 @@ package DAO;
 import QLVT_BY_LINH.connectDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import ttcs.HoaDon;
 import ttcs.KhachHang;
 
 /**
@@ -16,7 +21,7 @@ import ttcs.KhachHang;
 public class DAOKhachHang {
     private Connection conn = new connectDB().getConnection();
     
-    public void insertHoaDon(KhachHang kh){
+    public void insertKhachHang(KhachHang kh){
         String sql = "insert into dbo.KhachHang(MaKH,TenKH)"
                 + "values (?,?)";
         try {
@@ -26,7 +31,21 @@ public class DAOKhachHang {
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
+        }   
+    }
+    
+    public int getRowCount(){
+        try {
+            String sql = "select count(*) from dbo.KhachHang";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            int rowCount = rs.getInt(1);
+            return rowCount;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOKhachHang.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        return 0;
     }
 }

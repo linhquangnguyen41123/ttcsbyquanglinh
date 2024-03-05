@@ -13,7 +13,9 @@ public class HoaDon {
     private String NgayLapHoaDon;
     private String LoaiHD;
     private String MaNV;
+    private String TenNV;
     private String MaKH;
+    private String TenKH;
     private int ThanhTien;
     private int TrangThai;
 
@@ -78,4 +80,21 @@ public class HoaDon {
         this.MaKH = MaKH;
     }
 
+    public String getTenNV() {
+        return TenNV;
+    }
+
+    public void setTenNV(String TenNV) {
+        this.TenNV = TenNV;
+    }
+
+    public String getTenKH() {
+        return TenKH;
+    }
+
+    public void setTenKH(String TenKH) {
+        this.TenKH = TenKH;
+    }
+    
+    
 }

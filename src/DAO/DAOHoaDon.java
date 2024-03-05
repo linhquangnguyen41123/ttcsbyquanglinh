@@ -29,8 +29,10 @@ public class DAOHoaDon {
                 hd.setSoHD(rs.getString("MaHD"));
                 hd.setNgayLapHoaDon(rs.getString("NgayLap"));
                 hd.setLoaiHD(rs.getString("Loai"));
+                hd.setTenNV(rs.getString("TenNV"));
                 hd.setMaNV(rs.getString("MaNV"));
                 hd.setMaKH(rs.getString("MaKH"));
+                hd.setTenNV(rs.getString("TenKH"));
                 hd.setThanhTien(rs.getInt("ThanhTien"));
                 hd.setTrangThai(rs.getInt("TrangThai"));
                 listHD.add(hd);
@@ -42,17 +44,19 @@ public class DAOHoaDon {
     }
     
     public void insertHoaDon(HoaDon hd){
-        String sql = "insert into dbo.HoaDon(MaHD,NgayLap,Loai,MaNV,MaKH,ThanhTien,TrangThai) "
-                + "values (?,?,?,?,?,?,?)";
+        String sql = "insert into dbo.HoaDon(MaHD,NgayLap,Loai,TenNV,MaNV,MaKH,TenKH,ThanhTien,TrangThai) "
+                + "values (?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps= conn.prepareStatement(sql);
             ps.setString(1, hd.getSoHD());
             ps.setString(2, hd.getNgayLapHoaDon());
             ps.setString(3, hd.getLoaiHD());
-            ps.setString(4, hd.getMaNV());
-            ps.setString(5, hd.getMaKH());
-            ps.setFloat(6,hd.getThanhTien());
-            ps.setInt(7, hd.getTrangThai());
+            ps.setString(4, hd.getTenNV());
+            ps.setString(5, hd.getMaNV());
+            ps.setString(6, hd.getMaKH());
+            ps.setString(7, hd.getTenNV());
+            ps.setInt(8,hd.getThanhTien());
+            ps.setInt(9, hd.getTrangThai());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +70,7 @@ public class DAOHoaDon {
             
             PreparedStatement ps= conn.prepareStatement(sqlUpdateSLT);
             
-            ps.setFloat(1, thanhTien);
+            ps.setInt(1, thanhTien);
             ps.setString(2, hd.getSoHD());
             ps.executeUpdate();
         } catch (Exception e) {
