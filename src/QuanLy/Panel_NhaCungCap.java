@@ -140,6 +140,7 @@ private void LamMoi(){
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
 
         btnThêm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnThêm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-plus-20.png"))); // NOI18N
         btnThêm.setText("Thêm");
         btnThêm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
