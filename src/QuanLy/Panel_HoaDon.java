@@ -56,34 +56,40 @@ public class Panel_HoaDon extends javax.swing.JPanel {
         HoaDon hd = new HoaDon();
         hd.setSoHD("HD"+createMa()) ; 
         
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");  
         Date date = jDateNgayLap.getDate();
-        
+        if(date == null){
+            return null;
+        }else{
+            hd.setNgayLapHoaDon(sdf.format(date));
+        }
 
-        hd.setNgayLapHoaDon(sdf.format(date));
         if(rbtnNhap.isSelected()){
-            hd.setLoaiHD("Nhập");   
+            hd.setLoaiHD("Nhập"); 
         } else if(rbtnxuat.isSelected()){
             hd.setLoaiHD("Xuất");   
         }        
         
+        
+        
         QuanLyVatTu qlvt = new QuanLyVatTu();
         hd.setMaNV(qlvt.txt_MaNV.getText());
         hd.setTenNV(qlvt.txt_username.getText());
-        hd.setMaKH("KH"+ createMa());
+        hd.setMaKH("KH"+createMa());
         hd.setTenKH(txtTenKH.getText());
         //insert khach hang
         
         
-        KhachHang kh = new KhachHang();
-        kh.setMaKH("KH"+ createMa());
-        kh.setTenKH(txtTenKH.getText());
-        new DAOKhachHang().insertKhachHang(kh);
         
         
         
-        //maNV==null
-        if( "".equals(hd.getSoHD()) || hd.getLoaiHD() == null){
+        if(this.checkNgay()== false){
+            JOptionPane.showMessageDialog(this, "Ngày lập hóa đơn không được lớn hơn ngày hiện tại!!!",
+                "Thông báo ngày lập hóa đơn", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+        
+        if(hd.getLoaiHD() == null){
             return null;
         }
         return hd;
@@ -304,7 +310,9 @@ public class Panel_HoaDon extends javax.swing.JPanel {
         jTextPane1.setText(jTextPane1.getText() + "Số hóa đơn: " +hd.getSoHD()+ "\n");
         jTextPane1.setText(jTextPane1.getText() + "Tên nhân viên: " +hd.getTenNV()+ "\n");
         jTextPane1.setText(jTextPane1.getText() + "Ngày lập hóa đơn: " +hd.getNgayLapHoaDon()+ "\n");
-        jTextPane1.setText(jTextPane1.getText() + "Tên khách hàng: " +hd.getTenKH()+ "\n");
+        if(hd.getTenKH() != null){
+            jTextPane1.setText(jTextPane1.getText() + "Tên khách hàng: " +hd.getTenKH()+ "\n");
+        }
         jTextPane1.setText(jTextPane1.getText() + "-------------------------------------------------------------------------------------" + "\n");
         String sf1 = String.format("%-8s%-17s%-15s%-15s%-15s", "STT","Tên sản phẩm","SL","Đơn giá","Thành tiền");
         jTextPane1.setText(jTextPane1.getText() + sf1 + "\n");
@@ -341,6 +349,7 @@ public class Panel_HoaDon extends javax.swing.JPanel {
         initComponents();
         this.ShowTableHoaDon();
         this.showTableVT();
+        
     }
 
     /**
@@ -657,14 +666,34 @@ public class Panel_HoaDon extends javax.swing.JPanel {
 
         buttonGroup1.add(rbtnNhap);
         rbtnNhap.setText("Nhập");
+        rbtnNhap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbtnNhapMouseClicked(evt);
+            }
+        });
         rbtnNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtnNhapActionPerformed(evt);
             }
         });
+        rbtnNhap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                rbtnNhapKeyPressed(evt);
+            }
+        });
 
         buttonGroup1.add(rbtnxuat);
         rbtnxuat.setText("Xuất");
+        rbtnxuat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbtnxuatMouseClicked(evt);
+            }
+        });
+        rbtnxuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnxuatActionPerformed(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 51, 153));
@@ -897,13 +926,14 @@ public class Panel_HoaDon extends javax.swing.JPanel {
 
     private void btnLapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLapActionPerformed
 
-        if(this.checkNgay()== false){
-            JOptionPane.showMessageDialog(this, "Ngày lập hóa đơn không được lớn hơn ngày hiện tại!!!",
-                "Thông báo ngày lập hóa đơn", JOptionPane.ERROR_MESSAGE);
-        }
-        if (this.addHoaDon() == null ) {
+        
+        if (this.addHoaDon() == null) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin!!");
         } else{
+            KhachHang kh = new KhachHang();
+            kh.setMaKH("KH"+ createMa());
+            kh.setTenKH(txtTenKH.getText());
+            new DAOKhachHang().insertKhachHang(kh);
             new DAOHoaDon().insertHoaDon(addHoaDon());
             JOptionPane.showMessageDialog(this, "Thêm thành công!!!");
             this.ShowTableHoaDon();
@@ -913,6 +943,7 @@ public class Panel_HoaDon extends javax.swing.JPanel {
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         buttonGroup1.clearSelection();
         txtTenKH.setText("");
+        jDateNgayLap.setCalendar(null);
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void rbtnNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnNhapActionPerformed
@@ -924,6 +955,22 @@ public class Panel_HoaDon extends javax.swing.JPanel {
         this.ShowTableHoaDon();
         this.showTableVT();
     }//GEN-LAST:event_tbldshdMouseClicked
+
+    private void rbtnxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnxuatActionPerformed
+        
+    }//GEN-LAST:event_rbtnxuatActionPerformed
+
+    private void rbtnNhapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rbtnNhapKeyPressed
+        
+    }//GEN-LAST:event_rbtnNhapKeyPressed
+
+    private void rbtnNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnNhapMouseClicked
+        txtTenKH.setEnabled(false);
+    }//GEN-LAST:event_rbtnNhapMouseClicked
+
+    private void rbtnxuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnxuatMouseClicked
+        txtTenKH.setEnabled(true);
+    }//GEN-LAST:event_rbtnxuatMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,17 +5,34 @@
 package QuanLy;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Anh Kiet
  */
 public class QuanLyVatTu extends javax.swing.JFrame {
+    private String maNV;
+private String hoTen;
+private String vaiTro;
+    
+    public void setThongTinNhanVien(String maNV, String hoTen,String vaiTro) {
+    this.maNV = maNV;
+    this.hoTen = hoTen;
+    this.vaiTro = vaiTro;
 
+    // Hiển thị thông tin
+    txt_MaNV.setText(this.maNV);
+    txt_username.setText(this.hoTen);
+    role1.setText(this.vaiTro);
+    }
     
     public QuanLyVatTu() {
+        
         initComponents();
         setLocationRelativeTo(null);
+        
+//        new DangNhap().getInfor();
         Panel_NhanVien panel_NhanVien = new Panel_NhanVien();
         jTabbedPane2.add("tab2",panel_NhanVien);
         Panel_VatTu panel_VatTu = new Panel_VatTu();
@@ -24,8 +41,10 @@ public class QuanLyVatTu extends javax.swing.JFrame {
         jTabbedPane2.add("tab4",panel_NhaCungCap);
         Panel_HoaDon panel_HoaDon = new Panel_HoaDon();
         jTabbedPane2.add("tab5",panel_HoaDon);
-        Panel_CTHoaDon panel_CTHoaDon = new Panel_CTHoaDon();
-        jTabbedPane2.add("tab6",panel_CTHoaDon);
+        Panel_ThongKe panel_ThongKe = new Panel_ThongKe();
+        jTabbedPane2.add("tab6",panel_ThongKe);
+        Panel_DangKy panel_DangKy = new Panel_DangKy();
+        jTabbedPane2.add("tab7",panel_DangKy);
         
         
     }
@@ -57,6 +76,7 @@ public class QuanLyVatTu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         txt_username = new javax.swing.JLabel();
         role1 = new javax.swing.JLabel();
+        jbtn_DangNhap = new javax.swing.JButton();
         jTabbedPane = new javax.swing.JTabbedPane();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
@@ -218,7 +238,7 @@ public class QuanLyVatTu extends javax.swing.JFrame {
                 jbtn_ThongKeMouseExited(evt);
             }
         });
-        jPanel1.add(jbtn_ThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 440, 210, 71));
+        jPanel1.add(jbtn_ThongKe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 210, 71));
 
         user.setForeground(new java.awt.Color(255, 255, 255));
         user.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -250,6 +270,28 @@ public class QuanLyVatTu extends javax.swing.JFrame {
         role1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         role1.setText("role");
         jPanel1.add(role1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 120, -1));
+
+        jbtn_DangNhap.setBackground(new java.awt.Color(51, 0, 102));
+        jbtn_DangNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jbtn_DangNhap.setForeground(new java.awt.Color(255, 255, 255));
+        jbtn_DangNhap.setText("ĐĂNG KÝ");
+        jbtn_DangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbtn_DangNhapMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbtn_DangNhapMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbtn_DangNhapMouseExited(evt);
+            }
+        });
+        jbtn_DangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_DangNhapActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbtn_DangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 440, 210, 71));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 720));
         getContentPane().add(jTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, -35, -1, 590));
@@ -318,6 +360,12 @@ public class QuanLyVatTu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        QuanLy.DangNhap gd=new QuanLy.DangNhap();
+        gd.setVisible(true);
+        gd.pack();
+        gd.setLocationRelativeTo(null); 
+        this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jbtnHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnHoaDonMouseClicked
@@ -386,6 +434,34 @@ public class QuanLyVatTu extends javax.swing.JFrame {
           jbtn_NhaCungCap.setBackground(new Color(51, 0, 102));
     }//GEN-LAST:event_jbtn_NhaCungCapMouseExited
 
+    private void jbtn_DangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtn_DangNhapMouseClicked
+         if ("Quản lý".equals(role1.getText())) {
+        // Nếu là QuanLy, thực hiện hành động cho button btndk
+        // ...
+        /*Panel_DangKy SignUpFrame = new Panel_DangKy();
+        SignUpFrame.setVisible(true);
+        SignUpFrame.pack();
+        SignUpFrame.setLocationRelativeTo(null); 
+        this.dispose();*/
+        jTabbedPane2.setSelectedIndex(6);
+    } else if ("Nhân viên".equals(role1.getText())) {
+        JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào chức năng này.");
+    }
+       
+    }//GEN-LAST:event_jbtn_DangNhapMouseClicked
+
+    private void jbtn_DangNhapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtn_DangNhapMouseEntered
+        jbtn_DangNhap.setBackground(new Color(0,255,255));
+    }//GEN-LAST:event_jbtn_DangNhapMouseEntered
+
+    private void jbtn_DangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtn_DangNhapMouseExited
+        jbtn_DangNhap.setBackground(new Color(51, 0, 102));
+    }//GEN-LAST:event_jbtn_DangNhapMouseExited
+
+    private void jbtn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_DangNhapActionPerformed
+//       
+    }//GEN-LAST:event_jbtn_DangNhapActionPerformed
+
 
 
 
@@ -441,11 +517,12 @@ public class QuanLyVatTu extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JButton jbtnHoaDon;
+    private javax.swing.JButton jbtn_DangNhap;
     private javax.swing.JButton jbtn_NhaCungCap;
     private javax.swing.JButton jbtn_NhanVien;
     private javax.swing.JButton jbtn_ThongKe;
     private javax.swing.JButton jbtn_VatTu;
-    private javax.swing.JLabel role1;
+    public javax.swing.JLabel role1;
     public javax.swing.JLabel txt_MaNV;
     public javax.swing.JLabel txt_username;
     private javax.swing.JLabel user;

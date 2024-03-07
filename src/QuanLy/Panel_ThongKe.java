@@ -5,6 +5,10 @@
 package QuanLy;
 
 import DAO.DAOHoaDon;
+import QLVT_BY_LINH.connectDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,7 +30,7 @@ import ttcs.HoaDon;
  *
  * @author Anh Kiet
  */
-public class Panel_CTHoaDon extends javax.swing.JPanel {
+public class Panel_ThongKe extends javax.swing.JPanel {
 
     public JFreeChart createChart() {
         JFreeChart barChart;
@@ -85,8 +89,24 @@ public class Panel_CTHoaDon extends javax.swing.JPanel {
             tblDoanhThuNam.setValueAt(sumMonth, i-1, 1);
         }    
     }
-    public Panel_CTHoaDon() {
+    public Panel_ThongKe() {
         initComponents();
+        Connection conn = new connectDB().getConnection();
+        String sql = "select * from dbo.NhanVien";
+       
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {  
+            String ho = rs.getString("Ho");  
+            String ten = rs.getString("Ten");
+            jCombo_nv.addItem(ho +" "+ ten);
+            }
+ 
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -109,6 +129,8 @@ public class Panel_CTHoaDon extends javax.swing.JPanel {
         btnTimKiem = new javax.swing.JButton();
         rbtnNhap1 = new javax.swing.JRadioButton();
         rbtnxuat1 = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
+        jCombo_nv = new javax.swing.JComboBox<>();
         jPanel13 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblDoanhThuNam = new javax.swing.JTable();
@@ -164,6 +186,16 @@ public class Panel_CTHoaDon extends javax.swing.JPanel {
         rbtnxuat1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rbtnxuat1.setText("Xuất");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setText("Nhân viên:");
+
+        jCombo_nv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        jCombo_nv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCombo_nvActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -171,16 +203,23 @@ public class Panel_CTHoaDon extends javax.swing.JPanel {
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateTo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jDateTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(270, 270, 270))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jDateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCombo_nv, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(rbtnNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbtnxuat1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,14 +233,18 @@ public class Panel_CTHoaDon extends javax.swing.JPanel {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateTo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(rbtnNhap1)
-                        .addComponent(rbtnxuat1))
+                        .addComponent(rbtnxuat1)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCombo_nv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateTo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -310,21 +353,21 @@ public class Panel_CTHoaDon extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(731, Short.MAX_VALUE)
+                .addContainerGap(776, Short.MAX_VALUE)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(540, Short.MAX_VALUE)))
+                    .addContainerGap(488, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(9, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -349,12 +392,15 @@ public class Panel_CTHoaDon extends javax.swing.JPanel {
         }else if(rbtnxuat1.isSelected()){
             loai = rbtnxuat1.getText();
         }
-
+        
+        String tenNV = (String) jCombo_nv.getSelectedItem();
+        
+        
         //Duyet qua danh sach va them
         for(HoaDon hd : listhd){
-            if(listdate.contains(hd.getNgayLapHoaDon()) == true && hd.getLoaiHD().equals(loai)){
+            if(listdate.contains(hd.getNgayLapHoaDon()) == true && (hd.getLoaiHD().equals(loai) || hd.getTenNV().equals(tenNV))){
                 Object[] row = new Object[]{tblThongkeTuNgay.getRowCount()+1, hd.getSoHD() , hd.getNgayLapHoaDon(), hd.getLoaiHD()
-                    , hd.getMaNV(), hd.getThanhTien()};
+                    , hd.getTenNV(), hd.getThanhTien()};
                 model.addRow(row);
             }
 
@@ -381,18 +427,25 @@ public class Panel_CTHoaDon extends javax.swing.JPanel {
         frame.setVisible(true);
     }//GEN-LAST:event_btnBieuDoActionPerformed
 
+    private void jCombo_nvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombo_nvActionPerformed
+        
+  
+    }//GEN-LAST:event_jCombo_nvActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBieuDo;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXacnhan;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> jCombo_nv;
     private com.toedter.calendar.JDateChooser jDateFrom;
     private com.toedter.calendar.JDateChooser jDateTo;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JScrollPane jScrollPane5;

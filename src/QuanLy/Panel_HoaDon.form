@@ -654,7 +654,9 @@
             <Property name="text" type="java.lang.String" value="Nh&#x1ead;p"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbtnNhapMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnNhapActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="rbtnNhapKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbtnxuat">
@@ -664,6 +666,10 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbtnxuatMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnxuatActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTenKH">
         </Component>
