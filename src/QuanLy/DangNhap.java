@@ -15,10 +15,12 @@ import javax.swing.JOptionPane;
  * @author Anh Kiet
  */
 public class DangNhap extends javax.swing.JFrame {
-        connectDB cn1= new connectDB();
-        Connection conn=null;
-         ResultSet rs;
-
+    connectDB cn1= new connectDB();
+    Connection conn=null;
+    ResultSet rs;
+    
+        
+    
     public DangNhap() {
         initComponents();
     }
@@ -147,9 +149,9 @@ try {
     String ten = rs.getString("Ten");
     String vaiTro = rs.getString("VaiTro");
 
-    QuanLyVatTu nv = new QuanLyVatTu();
-    nv.setThongTinNhanVien(maNV, ho + " " + ten, vaiTro);
-    nv.setVisible(true);
+    QuanLyVatTu qlvt = new QuanLyVatTu();
+    qlvt.setThongTinNhanVien(maNV, ho + " " + ten, vaiTro);
+    qlvt.setVisible(true);
     this.dispose();
     } else {
         JOptionPane.showMessageDialog(this, "Tên hoặc mật khẩu không đúng");
@@ -160,7 +162,8 @@ try {
     // Đóng kết nối tại đây nếu cần
 }
     }//GEN-LAST:event_btndnActionPerformed
-        
+     
+    
         
     /**
      * @param args the command line arguments
