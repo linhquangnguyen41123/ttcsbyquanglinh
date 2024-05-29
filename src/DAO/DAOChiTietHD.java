@@ -94,6 +94,22 @@ public class DAOChiTietHD {
             e.printStackTrace();
         }
     }
+    
+    public void updateSoLuongVT(CTHoaDon cthd, String maHD, String maVT, int soLuong){
+   
+        String sqlUpdateSL = "update dbo.CTHoaDon set LuongTon = ? where MaVT = ? and MaHD = ?";
+        try {
+            
+            PreparedStatement ps= conn.prepareStatement(sqlUpdateSL);
+            
+            ps.setInt(1, cthd.getSoLuong()+ soLuong);
+            ps.setString(2, maVT);
+            ps.setString(3, maHD);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         new DAOChiTietHD();
     }

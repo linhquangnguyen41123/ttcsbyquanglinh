@@ -4,13 +4,15 @@
  */
 package ttcs;
 
+import java.util.Date;
+
 /**
  *
  * @author Anh Kiet
  */
 public class HoaDon {
     private String SoHD;
-    private String NgayLapHoaDon;
+    private Date NgayLapHoaDon;
     private String LoaiHD;
     private String MaNV;
     private String TenNV;
@@ -31,14 +33,14 @@ public class HoaDon {
         this.SoHD = SoHD;
     }
 
-
-    public String getNgayLapHoaDon() {
+    public Date getNgayLapHoaDon() {
         return NgayLapHoaDon;
     }
 
-    public void setNgayLapHoaDon(String NgayLapHoaDon) {
+    public void setNgayLapHoaDon(Date NgayLapHoaDon) {
         this.NgayLapHoaDon = NgayLapHoaDon;
     }
+
 
     public String getLoaiHD() {
         return LoaiHD;

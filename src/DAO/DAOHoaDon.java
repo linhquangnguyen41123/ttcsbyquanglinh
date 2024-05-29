@@ -6,8 +6,10 @@ package DAO;
 
 import QLVT_BY_LINH.connectDB;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import ttcs.HoaDon;
 
@@ -27,12 +29,12 @@ public class DAOHoaDon {
             while (rs.next()) {                
                 HoaDon hd = new HoaDon();
                 hd.setSoHD(rs.getString("MaHD"));
-                hd.setNgayLapHoaDon(rs.getString("NgayLap"));
+                hd.setNgayLapHoaDon(rs.getDate("NgayLap"));
                 hd.setLoaiHD(rs.getString("Loai"));
                 hd.setTenNV(rs.getString("TenNV"));
                 hd.setMaNV(rs.getString("MaNV"));
                 hd.setMaKH(rs.getString("MaKH"));
-                hd.setTenNV(rs.getString("TenKH"));
+                hd.setTenKH(rs.getString("TenKH"));
                 hd.setThanhTien(rs.getInt("ThanhTien"));
                 hd.setTrangThai(rs.getInt("TrangThai"));
                 listHD.add(hd);
@@ -43,18 +45,29 @@ public class DAOHoaDon {
         return listHD;
     }
     
+    public static String toMysqlDateStr(java.util.Date date) {
+        String dateForMySql = "";
+        if (date == null) {
+            dateForMySql = null;
+        } else {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            dateForMySql = sdf.format(date);
+        }
+
+        return dateForMySql;    
+    }
     public void insertHoaDon(HoaDon hd){
         String sql = "insert into dbo.HoaDon(MaHD,NgayLap,Loai,TenNV,MaNV,MaKH,TenKH,ThanhTien,TrangThai) "
                 + "values (?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps= conn.prepareStatement(sql);
             ps.setString(1, hd.getSoHD());
-            ps.setString(2, hd.getNgayLapHoaDon());
+            ps.setString(2,  toMysqlDateStr(hd.getNgayLapHoaDon()));
             ps.setString(3, hd.getLoaiHD());
             ps.setString(4, hd.getTenNV());
             ps.setString(5, hd.getMaNV());
             ps.setString(6, hd.getMaKH());
-            ps.setString(7, hd.getTenNV());
+            ps.setString(7, hd.getTenKH());
             ps.setInt(8,hd.getThanhTien());
             ps.setInt(9, hd.getTrangThai());
             ps.executeUpdate();

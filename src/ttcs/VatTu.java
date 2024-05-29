@@ -10,11 +10,11 @@ public class VatTu {
     private int DonGiaNhap;
     private int DonGiaBan;
     private String MaNSX;
-
+    private int TrangThai;
     public VatTu() {
     }
 
-    public VatTu(String MaVT, String TenVT, String PhanLoai, String DonViTinh, int SoLuongTon, int DonGiaNhap, int DonGiaBan, String MaNSX) {
+    public VatTu(String MaVT, String TenVT, String PhanLoai, String DonViTinh, int SoLuongTon, int DonGiaNhap, int DonGiaBan, String MaNSX, int TrangThai) {
         this.MaVT = MaVT;
         this.TenVT = TenVT;
         this.PhanLoai = PhanLoai;
@@ -23,6 +23,7 @@ public class VatTu {
         this.DonGiaNhap = DonGiaNhap;
         this.DonGiaBan = DonGiaBan;
         this.MaNSX = MaNSX;
+        this.TrangThai = TrangThai;
     }
 
     public String getMaVT() {
@@ -87,6 +88,14 @@ public class VatTu {
 
     public void setMaNSX(String MaNSX) {
         this.MaNSX = MaNSX;
+    }
+
+    public int getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(int TrangThai) {
+        this.TrangThai = TrangThai;
     }
 
     

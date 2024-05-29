@@ -1,5 +1,4 @@
 package ttcs;
-import nhanvien.*;
 import java.util.Date;
 public class Nhanvien {
     private String maNV;
@@ -9,10 +8,12 @@ public class Nhanvien {
     private Date ngaySinh;
     private String soDT;
     private String email;
+    private boolean trangThai;
     public Nhanvien() {
        
     }
-    public Nhanvien(String maNV, String ho, String ten, boolean gioiTinh, Date ngaySinh, String soDT, String email) {
+
+    public Nhanvien(String maNV, String ho, String ten, boolean gioiTinh, Date ngaySinh, String soDT, String email, boolean trangThai) {
         this.maNV = maNV;
         this.ho = ho;
         this.ten = ten;
@@ -20,6 +21,7 @@ public class Nhanvien {
         this.ngaySinh = ngaySinh;
         this.soDT = soDT;
         this.email = email;
+        this.trangThai = trangThai;
     }
 
     public String getMaNV() {
@@ -78,18 +80,14 @@ public class Nhanvien {
         this.email = email;
     }
 
-   
-    @Override
-    public String toString() {
-        return "NhanVien{" +
-                "maNV='" + maNV + '\'' +
-                ", ho='" + ho + '\'' +
-                ", ten='" + ten + '\'' +
-                ", gioiTinh=" + gioiTinh +
-                ", ngaySinh=" + ngaySinh +
-                ", soDT='" + soDT + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public boolean isTrangThai() {
+        return trangThai;
     }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+    
+
 }
 
